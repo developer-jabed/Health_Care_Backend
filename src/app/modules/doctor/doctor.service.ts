@@ -5,8 +5,8 @@ import { prisma } from "../../shared/prisma";
 import { IDoctorUpdateInput } from "./doctor.interface";
 import httpStatus from 'http-status';
 import { openai } from "../../helper/open-router";
-import ApiError from "../../errors/api.error";
 import { extractJsonFromMessage } from "../../helper/extractJsonFromMessage";
+import ApiError from "../../errors/api.error";
 
 const getAllFromDB = async (filters: any, options: IOptions) => {
     const { page, limit, skip, sortBy, sortOrder } = paginationHelper.calculatePagination(options);
@@ -64,6 +64,11 @@ const getAllFromDB = async (filters: any, options: IOptions) => {
             doctorSpecialties: {
                 include: {
                     specialities: true
+                }
+            },
+            reviews: {
+                select: {
+                    rating: true
                 }
             }
         }
@@ -156,7 +161,8 @@ const getByIdFromDB = async (id: string): Promise<Doctor | null> => {
                 include: {
                     schedule: true
                 }
-            }
+            },
+            reviews: true
         },
     });
     return result;
