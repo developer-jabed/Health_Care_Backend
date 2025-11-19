@@ -43,8 +43,9 @@ router.post(
 
 router.delete(
     '/:id',
-    auth(UserRole.ADMIN, UserRole.ADMIN),
+    auth(UserRole.ADMIN), // only ADMIN access
     SpecialtiesController.deleteFromDB
 );
+
 
 export const SpecialtiesRoutes = router;
