@@ -71,8 +71,17 @@ const refreshToken = async (token: string) => {
         config.jwt.expires_in as string
     );
 
+    const refreshToken = jwtHelpers.generateToken({
+        email: userData.email,
+        role: userData.role
+    },
+        config.jwt.refresh_token_secret as Secret,
+        config.jwt.refresh_token_expires_in as string
+    );
+
     return {
         accessToken,
+        refreshToken,
         needPasswordChange: userData.needPasswordChange
     };
 
@@ -152,7 +161,7 @@ const resetPassword = async (token: string, payload: { id: string, password: str
         }
     });
 
-    const isValidToken = jwtHelpers.verifyToken(token, config.jwt.reset_pass_secret as Secret)
+    const isValidToken = jwtHelpers.verifyToken(token, config.jwt.jwt_secret as Secret)
 
     if (!isValidToken) {
         throw new ApiError(httpStatus.FORBIDDEN, "Forbidden!")
@@ -167,7 +176,8 @@ const resetPassword = async (token: string, payload: { id: string, password: str
             id: payload.id
         },
         data: {
-            password
+            password,
+            needPasswordChange: false
         }
     })
 };

@@ -7,7 +7,7 @@ import { IPaginationOptions } from "../../interfaces/pagination";
 import { fileUploader } from "../../helper/fileUploader";
 import { prisma } from "../../shared/prisma";
 import { paginationHelper } from "../../helper/paginationHelper";
-import { userSearchableFields } from "./user.constant";
+import { userSearchAbleFields } from "./user.constant";
 
 
 const createAdmin = async (req: Request): Promise<Admin> => {
@@ -173,7 +173,7 @@ const getAllFromDB = async (params: any, options: IPaginationOptions) => {
 
     if (params.searchTerm) {
         andConditions.push({
-            OR: userSearchableFields.map(field => ({
+            OR: userSearchAbleFields.map(field => ({
                 [field]: {
                     contains: params.searchTerm,
                     mode: 'insensitive'
