@@ -13,7 +13,7 @@ router.get(
 
 router.post(
     "/login",
-    AuthController.login
+    AuthController.loginUser
 )
 
 router.post(

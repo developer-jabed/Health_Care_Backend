@@ -2,8 +2,8 @@ import express, { NextFunction, Request, Response } from 'express';
 import { SpecialtiesValidtaion } from './specialties.validation';
 import auth from '../../middlewares/auth';
 import { UserRole } from '@prisma/client';
-import { fileUploader } from '../../helper/fileUploader';
 import { SpecialtiesController } from './specialities.controller';
+import { fileUploader } from '../../helper/fileUploader';
 
 
 const router = express.Router();
@@ -16,17 +16,14 @@ const router = express.Router();
 - Implement an HTTP GET endpoint returning specialties in JSON format.
 - ENDPOINT: /specialties
 */
-router.get(
-    '/',
-    SpecialtiesController.getAllFromDB
-);
+router.get('/', SpecialtiesController.getAllFromDB);
 
 router.post(
     '/',
     fileUploader.upload.single('file'),
     (req: Request, res: Response, next: NextFunction) => {
         req.body = SpecialtiesValidtaion.create.parse(JSON.parse(req.body.data))
-        return SpecialtiesController.inserIntoDB(req, res, next)
+        return SpecialtiesController.insertIntoDB(req, res, next)
     }
 );
 
@@ -43,9 +40,8 @@ router.post(
 
 router.delete(
     '/:id',
-    auth(UserRole.ADMIN), // only ADMIN access
+    auth(UserRole.SUPER_ADMIN, UserRole.ADMIN),
     SpecialtiesController.deleteFromDB
 );
-
 
 export const SpecialtiesRoutes = router;

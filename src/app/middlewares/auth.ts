@@ -1,7 +1,8 @@
 import { NextFunction, Request, Response } from "express"
-import { jwtHelper } from "../helper/jwtHelper";
+
 import ApiError from "../errors/api.error";
 import httpStatus from "http-status";
+import { jwtHelpers } from "../helper/jwtHelper";
 
 const auth = (...roles: string[]) => {
     return async (req: Request & { user?: any }, res: Response, next: NextFunction) => {
@@ -13,7 +14,7 @@ const auth = (...roles: string[]) => {
             }
 
             // ✔️ Use the SAME SECRET used to SIGN token
-            const verifyUser = jwtHelper.verifyToken(
+            const verifyUser = jwtHelpers.verifyToken(
                 token,
                 process.env.JWT_SECRET as string
             );
