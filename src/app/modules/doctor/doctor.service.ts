@@ -1,11 +1,10 @@
 import { Doctor, Prisma, UserStatus } from "@prisma/client";
-import { IDoctorFilterRequest, IDoctorUpdate } from "./doctor.interface";
 import { IPaginationOptions } from "../../interfaces/pagination";
+import { IDoctorFilterRequest, IDoctorUpdate } from "./doctor.interface";
 import { paginationHelper } from "../../helper/paginationHelper";
 import { doctorSearchableFields } from "./doctor.constant";
 import { prisma } from "../../shared/prisma";
 import { askOpenRouter } from "../../helper/openRouterClient";
-
 
 const getAllFromDB = async (
   filters: IDoctorFilterRequest,
@@ -81,6 +80,11 @@ const getAllFromDB = async (
           },
         },
       },
+      doctorSchedules: {
+        include: {
+          schedule: true
+        }
+      },
       review: {
         select: {
           rating: true,
@@ -116,6 +120,11 @@ const getByIdFromDB = async (id: string): Promise<Doctor | null> => {
         include: {
           specialities: true,
         },
+      },
+      doctorSchedules: {
+        include: {
+          schedule: true
+        }
       },
       review: true,
     },
