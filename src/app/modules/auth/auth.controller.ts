@@ -173,6 +173,8 @@ REFRESH_TOKEN_EXPIRES_IN=1y
 const changePassword = catchAsync(
   async (req: Request & { user?: any }, res: Response) => {
     const user = req.user;
+    console.log("REQ.BODY:", req.body);
+    console.log("REQ.USER:", req.user);
 
     const result = await AuthServices.changePassword(user, req.body);
 

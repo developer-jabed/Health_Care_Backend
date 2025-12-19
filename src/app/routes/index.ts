@@ -1,6 +1,5 @@
 import express from 'express';
 import { userRoutes } from '../modules/user/user.routes';
-import { authRoutes } from '../modules/auth/auth.routes';
 import { ScheduleRoutes } from '../modules/schedule/schedule.routes';
 import { AdminRoutes } from '../modules/admin/admin.routes';
 import { PatientRoutes } from '../modules/patient/patient.routes';
@@ -11,6 +10,7 @@ import { PrescriptionRoutes } from '../modules/prescription/prescription.router'
 import { ReviewRoutes } from '../modules/review/review.router';
 import { MetaRoutes } from '../modules/meta/meta.router';
 import { DoctorScheduleRoutes } from '../modules/doctorSchedule/doctorSchedule.routes';
+import { AuthRoutes } from '../modules/auth/auth.routes';
 
 
 
@@ -23,7 +23,7 @@ const moduleRoutes = [
     },
     {
         path: '/auth',
-        route: authRoutes
+        route: AuthRoutes
     },
     {
         path: '/schedule',
