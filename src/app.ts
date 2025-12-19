@@ -5,24 +5,17 @@ import httpStatus from 'http-status';
 import cron from 'node-cron';
 import globalErrorHandler from './app/middlewares/globalErrorHandler';
 import router from './app/routes';
-import { PaymentController } from './app/modules/payment/payment.controller';
 import { AppointmentService } from './app/modules/appointment/appointment.service';
+import { PaymentController } from './app/modules/payment/payment.controller';
 
 const app: Application = express();
+app.use(cookieParser());
+
 app.post(
     "/webhook",
     express.raw({ type: "application/json" }),
-    (req, res, next) => {
-        console.log("🚀 Stripe webhook hit");
-        console.log("Headers:", req.headers);
-        console.log("Body length:", req.body.length);
-        next();
-    },
     PaymentController.handleStripeWebhookEvent
 );
-
-app.use(cookieParser());
-
 
 app.use(cors({
     origin: ['http://localhost:3000', 'http://localhost:3001'],
@@ -32,7 +25,6 @@ app.use(cors({
 //parser
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
-
 
 
 cron.schedule('*/5 * * * *', () => {
