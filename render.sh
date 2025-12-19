@@ -10,11 +10,11 @@ npm install
 
 # 2. Generate Prisma client
 echo "🛠 Generating Prisma client..."
-npx prisma generate --schema=./prisma/schema.prisma
+npx prisma generate --schema=./prisma/schema/
 
 # 3. Run database migrations
 echo "🗄 Running Prisma migrations..."
-npx prisma migrate deploy --schema=./prisma/schema.prisma
+npx prisma migrate deploy --schema=./prisma/schema/
 
 # 4. Build TypeScript project
 echo "🛠 Building TypeScript project..."
