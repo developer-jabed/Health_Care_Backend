@@ -2,5 +2,5 @@ import Stripe from "stripe";
 import config from "../../config";
 
 export const stripe = new Stripe(config.stripeSecretKey as string, {
-  apiVersion: "2025-09-30.clover",
+  apiVersion: "2025-10-29.clover",
 });
