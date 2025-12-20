@@ -1,14 +1,6 @@
-#!/bin/bash
-set -o errexit
+ set -o errexit
 
-echo "📦 Installing dependencies"
-npm install
-
-echo "🛠️ Building project"
-npm run build
-
-echo "⚡ Generating Prisma Client"
-npx prisma generate --schema=prisma/schema/schema.prisma
-
-echo "🗄️ Applying Prisma migrations"
-npx prisma migrate deploy --schema=prisma/schema/schema.prisma
+ npm install
+ npm run build
+ npx prisma generate
+ npx prisma migrate deploy

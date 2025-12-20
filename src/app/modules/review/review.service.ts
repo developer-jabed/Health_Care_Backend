@@ -1,4 +1,4 @@
-import { hasAutoParseableInput } from "openai/lib/parser";
+
 import { prisma } from "../../shared/prisma";
 import { IJWTPayload } from "../../types/common";
 import httpStatus from 'http-status'

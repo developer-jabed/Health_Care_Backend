@@ -1,4 +1,4 @@
-import { Admin, Doctor, Patient, Prisma, UserRole, UserStatus } from "@prisma/client";
+
 import * as bcrypt from 'bcryptjs';
 import { Request } from "express";
 import config from "../../../config";
@@ -8,6 +8,7 @@ import { fileUploader } from "../../helper/fileUploader";
 import { prisma } from "../../shared/prisma";
 import { paginationHelper } from "../../helper/paginationHelper";
 import { userSearchAbleFields } from "./user.constant";
+import { Admin, Doctor, Patient, Prisma, UserRole, UserStatus } from '@prisma/client';
 
 
 const createAdmin = async (req: Request): Promise<Admin> => {
