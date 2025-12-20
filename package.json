@@ -4,7 +4,7 @@
   "main": "index.js",
   "license": "MIT",
   "prisma": {
-    "schema": "./prisma/schema/"
+    "schema": "./prisma/schema"
   },
   "scripts": {
     "dev": "ts-node-dev --respawn --transpile-only ./src/server.ts",
@@ -19,7 +19,7 @@
     "stripe:webhook": "stripe listen --forward-to localhost:5000/webhook"
   },
   "devDependencies": {
-    "@prisma/client": "^6.11.1",
+    "@prisma/client": "^7.2.0",
     "@types/cookie-parser": "^1.4.9",
     "@types/cors": "^2.8.19",
     "@types/express": "^5.0.3",
@@ -28,7 +28,7 @@
     "@types/node": "^24.0.10",
     "@types/nodemailer": "^6.4.17",
     "@types/pg": "^8.15.6",
-    "prisma": "^6.11.1",
+    "prisma": "^7.2.0",
     "ts-node-dev": "^2.0.0",
     "typescript": "^5.8.3"
   },
