@@ -18,7 +18,7 @@ app.post(
 );
 
 app.use(cors({
-    origin: ['http://localhost:3000', 'https://health-care-client-eight.vercel.app'],
+    origin: ['http://localhost:3000', 'https://health-care-ui-sepia.vercel.app'],
     credentials: true
 }));
 
