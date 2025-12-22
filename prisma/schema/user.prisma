@@ -74,6 +74,7 @@ model Patient {
   appointment       Appointment[]
   prescription      Prescription[]
   review            Review[]
+  planPurchases     PlanPurchase[]
 
   @@map("patients")
 }

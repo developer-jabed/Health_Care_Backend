@@ -43,3 +43,27 @@ enum PaymentStatus {
   PAID
   UNPAID
 }
+
+enum DiscountType {
+  PERCENTAGE
+  FIXED
+}
+
+enum PlanType {
+  BASIC
+  FAMILY
+  PREMIUM
+}
+
+enum PlanStatus {
+  ACTIVE
+  EXPIRED
+  CANCELLED
+}
+
+enum PaymentMethod {
+  BKASH
+  NAGAD
+  CARD
+  CASH
+}

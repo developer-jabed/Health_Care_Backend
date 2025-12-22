@@ -11,12 +11,12 @@ import { ReviewRoutes } from '../modules/review/review.router';
 import { MetaRoutes } from '../modules/meta/meta.router';
 import { DoctorScheduleRoutes } from '../modules/doctorSchedule/doctorSchedule.routes';
 import { AuthRoutes } from '../modules/auth/auth.routes';
-
-
+import { CouponRoutes } from '../modules/coupon/coupon.router';
 
 const router = express.Router();
 
 const moduleRoutes = [
+ 
     {
         path: '/user',
         route: userRoutes
@@ -41,6 +41,7 @@ const moduleRoutes = [
         path: '/doctor',
         route: DoctorRoutes
     },
+
     {
         path: '/admin',
         route: AdminRoutes
@@ -65,6 +66,11 @@ const moduleRoutes = [
         path: '/metadata',
         route: MetaRoutes
     },
+    // {
+    //     path: '/coupon',
+    //     route: CouponRoutes
+    // }
+
 ];
 
 moduleRoutes.forEach(route => router.use(route.path, route.route))
